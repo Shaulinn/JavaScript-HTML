@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Buton Generator</title>
+    <style>
+      body {
+        background-color: #282828;
+        color: white;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        height: 100vh;
+        margin: 0;
+      }
+      #counterBox {
+        position: fixed;
+        bottom: 0;
+        right: 0;
+        background-color: #ffffff;
+        color: #000000;
+        padding: 10px;
+        font-family: Arial, sans-serif;
+      }
+      button {
+        margin: 5px;
+        padding: 10px;
+        font-size: 16px;
+      }
+      #rezultat {
+        margin-top: 10px;
+        font-size: 18px;
+      }
+    </style>
+  </head>
+  <body onload="buttonGenerate()">
+    <div id="counterBox">Numar buton: <span id="counter">0</span></div>
+    <div>
+      <h2>Buton Generator</h2>
+      <div id="butoane-container"></div>
+      <div id="rezultat"></div>
+    </div>
+
+    <script>
+      let counterValue = 0;
+
+      function buttonGenerate() {
+        const butoaneContainer = document.getElementById("butoane-container");
+        const rezultatContainer = document.getElementById("rezultat");
+
+        for (let i = 0; i < 10; i++) {
+          const buton = document.createElement("button");
+          buton.textContent = i;
+          buton.addEventListener("click", function () {
+            const rezultatContainer = document.getElementById("rezultat");
+            const rezultat = document.createTextNode(i);
+            rezultatContainer.appendChild(rezultat);
+            updateCounter(i);
+          });
+          butoaneContainer.appendChild(buton);
+        }
+      }
+
+      function updateCounter(caracter) {
+        counterValue = caracter;
+        const counterDisplayed = document.getElementById("counter");
+        counterDisplayed.textContent = counterValue;
+      }
+    </script>
+  </body>
+</html>
